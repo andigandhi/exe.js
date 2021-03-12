@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="https://unpkg.com/98.css" />
 	<link rel="stylesheet" href="style.css" />
 	<meta charset="utf-8">
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<title>Unbenanntes Dokument</title>
 </head>
 
@@ -35,14 +35,17 @@
 				return;
 			}
 			
+			var titel = prompt("Willst du deinem Werk noch einen Namen geben?", "Komposition 69");
+			
 			var dataURL = document.getElementById('can').toDataURL("image/png");
-
+			
 			$.ajax({
 				type: "POST",
 				url: "paint-handler.php",
 				data: { 
 					imgBase64: dataURL,
-					user: username
+					user: username,
+					title: titel
 				}
 			}).done(function(response) {
 				document.getElementById("resultDiv").innerHTML = response;
@@ -129,7 +132,8 @@
 		}
 		
 		function createPalette() {
-			const colors = ['#000', '#F00', '#0F0', '#00F', '#FF0', '#F0F', '#0FF'];
+			//const colors = ['#000', '#F00', '#0F0', '#00F', '#FF0', '#F0F', '#0FF'];
+			const colors = ['#000', '#874313', '#03a108', '#ad0aa8', '#1196d4', '#d41111', '#edca05'];
 			var palette = document.getElementById("palette");
 			for (var i = 0; i < colors.length; i++) {
 				var c = colors[i];

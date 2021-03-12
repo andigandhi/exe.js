@@ -1,6 +1,7 @@
 <?php
 	function addJSON($pictures, $name) {
-		$newData['user'] = $_POST['user'];
+		$newData['user'] = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['user']);
+		$newData['title'] = substr(preg_replace("/[^a-zA-Z0-9]+/", " ", $_POST['title']), 0, 25);
 		$newData['name'] = $name;
 		$newData['points'] = 0;
 		
